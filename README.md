@@ -1,4 +1,8 @@
-## Convert Folder to HuggingFace Dataset Format
+# Essential Tools
+
+This repo contains easy to use functions to handle common tasks.
+
+### Convert Folder to HuggingFace Dataset Format
 ```python
 #==============================================
 #       FOLDER TO HUGGINGFACE DATASET
