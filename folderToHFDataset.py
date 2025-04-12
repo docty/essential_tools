@@ -11,7 +11,7 @@ import os
 #==============================================
 
 
-class toHuggingFaceDataset:
+class folderToHFDataset:
     def __init__(self, trainDataset, valDataset= None, testDataset = None):
         self.trainDataset = trainDataset
         self.valDataset = valDataset
