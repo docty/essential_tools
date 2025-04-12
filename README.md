@@ -1,9 +1,10 @@
-```code python
+## Convert Folder to HuggingFace Dataset Format
+```python
 #==============================================
-#           INITIALIZATION
+#       FOLDER TO HUGGINGFACE DATASET
 #==============================================
 
-config = toHuggingFaceDataset(
+config = folderToHFDataset(
     trainDataset='/kaggle/input/brain-tumor-mri-data/brain-tumor-mri-dataset', 
     valDataset=None, 
     testDataset=None 
