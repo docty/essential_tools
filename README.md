@@ -16,3 +16,17 @@ config = folderToHFDataset(
 
 dataset = config.getDataset()
 ```
+
+### Upload to HuggingFace Hub
+```python
+#================================================
+#        DEPLOY DATASET TO HUGGINGFACE HUB
+#================================================
+
+from huggingface_hub import notebook_login
+
+
+notebook_login()
+
+dataset.push_to_hub("Docty/Oral-Cancer")
+```
