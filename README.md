@@ -37,6 +37,10 @@ packagePython.ipynb
 
 ### Google Cloud Platform Template
 ```python
-!python gcptemplate.py \
---project_id 'rwd2452sd'
+!python /content/essential-tools/gcptemplate.py \
+--project_id  'gcp-deployment-example-454318' \
+--bucket_uri 'gs://gcp-deployment-example-454318-bucket' \
+--script_path '/content/task.py' \
+--job_name 'sentiment-job' \
+--framework 'sklearn'
 ```
