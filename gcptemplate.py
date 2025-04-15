@@ -6,13 +6,10 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Google Cloud Platform.")
-    parser.add_argument(
-        "--project_id",
-        type=str,
-        default=None,
-        required=True,
-        help="Project ID",
-    )
+
+    parser.add_argument( "--project_id", type=str, default=None,  required=True, help="Project ID")
+    parser.add_argument( "--location", type=str,  default='us-central1', help="Location" )
+    parser.add_argument( "--bucket_uri", type=str,  default=None, help="Bucket URI" )
 
     args = parser.parse_args()
 
@@ -21,7 +18,10 @@ def parse_args():
 
 
 def main(args):
-    print(args.project_id)
+    print(args)
+    PROJECT_ID = args.project_id
+    LOCATION = args.location
+    BUCKET_URI=args.bucket_uri
 
  
     
