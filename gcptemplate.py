@@ -3,10 +3,6 @@ import argparse
 
  
 
-argParser.addArgument('--project_id', default=None)
-
-args = argparse.parser()
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Google Cloud Platform.")
