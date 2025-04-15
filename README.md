@@ -34,3 +34,9 @@ dataset.push_to_hub("Docty/Oral-Cancer")
 ```bash
 packagePython.ipynb
 ```
+
+### Google Cloud Platform Template
+```python
+!python gcptemplate.py \
+--project_id 'rwd2452sd'
+```
