@@ -34,10 +34,7 @@ def main(args):
         enable_autolog=True,
     )
 
-    job.run(
-          machine_type='n1-standard-8',
-          accelerator_type='NVIDIA_TESLA_V100',
-          accelerator_count=1)
+    job.run( )
 
     print(job)
     # my_job = aiplatform.CustomContainerTrainingJob(
