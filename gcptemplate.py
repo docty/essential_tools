@@ -33,6 +33,12 @@ def main(args):
         container_uri= 'us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-9.py310:latest',
         enable_autolog=True,
     )
+
+    job.run(replica_count=1,
+          machine_type='n1-standard-8',
+          accelerator_type='NVIDIA_TESLA_V100',
+          accelerator_count=1)
+
     print(job)
     # my_job = aiplatform.CustomContainerTrainingJob(
     #     display_name = 'flower-sdk-job',
