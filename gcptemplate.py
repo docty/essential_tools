@@ -24,6 +24,7 @@ def main(args):
 
     # Model Training
     aiplatform.init(project=PROJECT_ID, location=LOCATION, staging_bucket=BUCKET_URI)
+    print(aiplatform)
     # my_job = aiplatform.CustomContainerTrainingJob(
     #     display_name = 'flower-sdk-job',
     #     container_uri = 'us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-9.py310:latest',
