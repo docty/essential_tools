@@ -11,6 +11,7 @@ def parse_args():
     parser.add_argument( "--bucket_uri", type=str,  default=None, help="Bucket URI" )
     parser.add_argument( "--script_path", type=str,  default=None, help="Script Path" )
     parser.add_argument( "--job_name", type=str,  default='flower-sdk-job', help="Custom Job Name" )
+    parser.add_argument( "--framework", type=str,  default=None, required=True, help="Custom Job Name" )
 
     args = parser.parse_args()
 
@@ -25,6 +26,14 @@ def main(args):
     BUCKET_URI=args.bucket_uri
     SCRIPT_PATH = args.script_path
     JOB_NAME = args.job_name
+    FRAMEWORK = args.framework
+
+    if FRAMEWORK == 'sklearn':
+        container_uri = 'us-docker.pkg.dev/vertex-ai/training/sklearn-cpu.1-6:latest'
+    elif FRAMEWORK == 'pytorch':
+        container_uri = 'us-docker.pkg.dev/vertex-ai/training/pytorch-xla.2-3.py310:latest'
+    else:
+        container_uri = 'us-docker.pkg.dev/vertex-ai/training/tf-gpu.2-16.py310:latest'
 
     # Model Training
     aiplatform.init(project=PROJECT_ID, location=LOCATION, staging_bucket=BUCKET_URI)
@@ -32,7 +41,7 @@ def main(args):
     job = aiplatform.CustomJob.from_local_script(
         display_name=JOB_NAME,
         script_path=SCRIPT_PATH,
-        container_uri= 'us-docker.pkg.dev/vertex-ai/training/sklearn-cpu.1-6:latest',
+        container_uri= container_uri,
         enable_autolog=False,
     )
 
@@ -45,7 +54,7 @@ def main(args):
 
     # my_model = aiplatform.Model.upload(display_name='flower-model',
     #                                   artifact_uri='gs://{PROJECT_ID}-bucket/model_output',
-    #                                   serving_container_image_uri='us-docker.pkg.dev/vertex-ai/training/sklearn-cpu.1-6:latest')
+    #                                   serving_container_image_uri='us-docker.pkg.dev/vertex-ai/prediction/tf2-cpu.2-14:latest')
 
     # Deploy Model to Endpoint"""
 
