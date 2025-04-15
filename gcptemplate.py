@@ -32,7 +32,7 @@ def main(args):
     job = aiplatform.CustomJob.from_local_script(
         display_name=JOB_NAME,
         script_path=SCRIPT_PATH,
-        container_uri= 'us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-9.py310:latest',
+        container_uri= 'us-docker.pkg.dev/vertex-ai/training/sklearn-cpu.1-6:latest',
         enable_autolog=False,
     )
 
