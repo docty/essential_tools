@@ -31,7 +31,7 @@ def main(args):
         display_name='flower-sdk-job',
         script_path=SCRIPT_PATH,
         container_uri= 'us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-9.py310:latest',
-        enable_autolog=True,
+        enable_autolog=False,
     )
 
     job.run( )
