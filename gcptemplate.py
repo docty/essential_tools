@@ -9,6 +9,7 @@ def parse_args():
     parser.add_argument( "--project_id", type=str, default=None,  required=True, help="Project ID")
     parser.add_argument( "--location", type=str,  default='us-central1', help="Location" )
     parser.add_argument( "--bucket_uri", type=str,  default=None, help="Bucket URI" )
+    parser.add_argument( "--script_path", type=str,  default=None, help="Script Path" )
 
     args = parser.parse_args()
 
@@ -21,10 +22,18 @@ def main(args):
     PROJECT_ID = args.project_id
     LOCATION = args.location
     BUCKET_URI=args.bucket_uri
+    SCRIPT_PATH = args.script_path
 
     # Model Training
     aiplatform.init(project=PROJECT_ID, location=LOCATION, staging_bucket=BUCKET_URI)
-    print(aiplatform)
+    
+    job = aiplatform.CustomJob.from_local_script(
+        display_name='flower-sdk-job',
+        script_path=SCRIPT_PATH,
+        container_uri= 'us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-9.py310:latest',
+        enable_autolog=True,
+    )
+    print(job)
     # my_job = aiplatform.CustomContainerTrainingJob(
     #     display_name = 'flower-sdk-job',
     #     container_uri = 'us-docker.pkg.dev/vertex-ai/training/tf-cpu.2-9.py310:latest',
