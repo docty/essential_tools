@@ -30,3 +30,7 @@ notebook_login()
 
 dataset.push_to_hub("Docty/Oral-Cancer")
 ```
+### Package a python application
+```bash
+packagePython.ipynb
+```
