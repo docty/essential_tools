@@ -27,10 +27,7 @@ def parse_args():
 def main(args):
     print(args.project_id)
 
-
-
-
-if  ada = '':
+ 
     
 if __name__ == "__main__":
     args = parse_args()
