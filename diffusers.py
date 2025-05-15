@@ -11,7 +11,7 @@ class DiffuserPipeline(object):
         self,
         model_path,
         scheduler = "DPMSMS",
-        scheduler_configs = None,
+        scheduler_configs = {"use_karras_sigmas": True},
         lora_paths = [],
         lora_adapter_names = [],
         lora_scales = [],
@@ -231,7 +231,7 @@ class DiffuserPipeline(object):
             return self.prompt_embeddings, self.negative_prompt_embeddings
 
     
-    def run_pipe(
+    def run(
         self,
         prompt = None,
         negative_prompt= None,
