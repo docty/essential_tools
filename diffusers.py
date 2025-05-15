@@ -5,7 +5,7 @@ import compel
 import diffusers
 import torch
 
-class Text2ImagePipe(object):
+class DiffuserPipeline(object):
     
     def __init__(
         self,
