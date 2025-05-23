@@ -28,14 +28,29 @@ class LLMContextAware:
     def llms(self):
         return self.llm
 
-    def load_data(self, files):
-        uber_docs = SimpleDirectoryReader(input_files=[files]).load_data()
-        return uber_docs
+    def build_index(self, files):
+        documents = SimpleDirectoryReader(input_files=[files]).load_data()
+        index = VectorStoreIndex.from_documents(documents)
+        index.storage_context.persist("storage")
+        return index
+     
+    def load_index(self):
+        storage_context = StorageContext.from_defaults(persist_dir="storage")
+        return load_index_from_storage(storage_context)
+    
+    def load_data(self, files=None):
+        if not os.path.exists("storage"):
+            #print("Building new index \n===========================================")
+            index = self.build_index(files)
+        else:
+            #print("Loading existing index \n===========================================")
+            index = self.load_index()
+        return index
         
-    def query_engine(self, uber_docs):
-        uber_index = VectorStoreIndex.from_documents(uber_docs)
-        uber_query_engine = uber_index.as_query_engine(similarity_top_k=5)
-        return uber_query_engine
+        
+    def query_engine(self, docs):
+        query_engine = docs.as_query_engine(similarity_top_k=5)
+        return query_engine
 
      
     
@@ -44,8 +59,8 @@ class LLMContextAware:
             QueryEngineTool(
                 query_engine=query_engine,
                 metadata=ToolMetadata(
-                name="uber_10k",
-                description="Provides information about Uber financials for year 2021",
+                name="cv",
+                description="Provides information about my cv",
                 ),
             ),
         ]
