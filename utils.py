@@ -1,3 +1,6 @@
+import os
+import requests
+
 def download_data(data_url=None, local_file=None):
     os.makedirs("data", exist_ok=True)
     response = requests.get(data_url)
