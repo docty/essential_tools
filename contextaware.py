@@ -9,7 +9,7 @@ from llama_index.core import (
 )
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.agent import FunctionCallingAgent
-
+import os
 
 class LLMContextAware:
 
