@@ -16,7 +16,7 @@ def download_data(data_url=None, data_format='pdf'):
             f.write(response.content)
     elif data_format == 'zip':
          with zipfile.ZipFile(BytesIO(response.content)) as zip_ref:
-            zip_ref.extractall(extract_to)
+            zip_ref.extractall('data')
         
     print("Downloaded and saved into the data directory")
 
