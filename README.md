@@ -7,7 +7,7 @@ This repo contains easy to use functions to handle common tasks.
 #==============================================
 #       FOLDER TO HUGGINGFACE DATASET
 #==============================================
-from essential_tools import folderToHFDataset
+from essential_tools.folderToHFDataset import FolderToHFDataset
 
 config = folderToHFDataset(
     trainDataset='/kaggle/input/brain-tumor-mri-data/brain-tumor-mri-dataset', 
