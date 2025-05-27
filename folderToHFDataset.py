@@ -11,7 +11,7 @@ import os
 #==============================================
 
 
-class folderToHFDataset:
+class FolderToHFDataset:
     def __init__(self, trainDataset, valDataset= None, testDataset = None):
         self.trainDataset = trainDataset
         self.valDataset = valDataset
