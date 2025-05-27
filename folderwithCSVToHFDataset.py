@@ -31,7 +31,7 @@ class FolderWithCSVToHFDataset:
         return ds
 
 
-    def get_dataset(self):
+    def getDataset(self):
         dataset_dict = {}
 
         dataset_dict["train"] = self.create_dataset(self.train_folder, self.train_csv)
