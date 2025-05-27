@@ -36,7 +36,7 @@ dataset.push_to_hub("Docty/repo_name")
 #==============================================
 #       FOLDER TO HUGGINGFACE DATASET
 #==============================================
-from essential_tools.folderWithCSVToHFDataset import FolderWithCSVToHFDataset
+from essential_tools.folderwithCSVToHFDataset import FolderWithCSVToHFDataset
 
 config = FolderWithCSVToHFDataset(
     train_folder="/content/images",
