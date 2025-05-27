@@ -7,6 +7,7 @@ This repo contains easy to use functions to handle common tasks.
 #==============================================
 #       FOLDER TO HUGGINGFACE DATASET
 #==============================================
+from essential_tools import folderToHFDataset
 
 config = folderToHFDataset(
     trainDataset='/kaggle/input/brain-tumor-mri-data/brain-tumor-mri-dataset', 
@@ -25,11 +26,29 @@ dataset = config.getDataset()
 
 from huggingface_hub import notebook_login
 
-
 notebook_login()
 
-dataset.push_to_hub("Docty/Oral-Cancer")
+dataset.push_to_hub("Docty/repo_name")
 ```
+
+### Convert Folder with CSV to HuggingFace Dataset Format
+```python
+#==============================================
+#       FOLDER TO HUGGINGFACE DATASET
+#==============================================
+from essential_tools.folderWithCSVToHFDataset import FolderWithCSVToHFDataset
+
+config = FolderWithCSVToHFDataset(
+    train_folder="/content/images",
+    train_csv="/content/metadata.csv",
+
+)
+
+dataset = config.getDataset()
+```
+
+
+
 ### Package a python application
 ```bash
 packagePython.ipynb
