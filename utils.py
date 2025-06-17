@@ -3,6 +3,8 @@ import requests
 import zipfile
 from io import BytesIO
 
+from IPython.display import Markdown, display
+
 def download_data(data_url=None, data_format='pdf'):
     os.makedirs("data", exist_ok=True)
     response = requests.get(data_url)
@@ -20,4 +22,13 @@ def download_data(data_url=None, data_format='pdf'):
         
     print("Downloaded and saved into the data directory")
 
+
+
+
  
+def display_prompt_dict(prompts_dict):
+    for k, p in prompts_dict.items():
+        text_md = f"**Prompt Key**: {k}" f"**Text:** "
+        display(Markdown(text_md))
+        print(p.get_template())
+        display(Markdown(""))
