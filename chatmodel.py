@@ -49,7 +49,7 @@ class LLMChat:
         
         
     def query_engine(self, docs):
-        query_engine = docs.as_query_engine(similarity_top_k=5)
+        query_engine = docs.as_query_engine(similarity_top_k=5, response_mode="tree_summarize")
         return query_engine
 
      
