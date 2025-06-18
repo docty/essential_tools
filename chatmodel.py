@@ -13,10 +13,11 @@ import os
 
 class LLMChat:
 
-    def __init__(self):
+    def __init__(self, vector_store='storage'):
         self.llm = MistralAI(model="mistral-small-latest")
         self.embed_model = FastEmbedEmbedding(model_name="BAAI/bge-small-en")
         self.setDefaultSettings()
+        self.vector_store = vector_store
 
 
     def setDefaultSettings(self):
@@ -30,16 +31,24 @@ class LLMChat:
 
     def build_index(self, files):
         documents = SimpleDirectoryReader(input_files=[files]).load_data()
-        index = VectorStoreIndex.from_documents(documents)
-        index.storage_context.persist("storage")
-        return index
-     
+        if isinstance(self.vector_store, str):
+            index = VectorStoreIndex.from_documents(documents)
+            index.storage_context.persist(self.vector_store)
+            return index
+        else:
+             index = VectorStoreIndex.from_documents(documents, storage_context=self.vector_store)
+             return index
+        
     def load_index(self):
-        storage_context = StorageContext.from_defaults(persist_dir="storage")
+        if isinstance(self.vector_store, str): 
+            storage_context = StorageContext.from_defaults(persist_dir=self.vector_store)
+            return load_index_from_storage(storage_context)
+        else:
+            storage_context = StorageContext.from_defaults(vector_store=self.vector_store)
         return load_index_from_storage(storage_context)
     
     def load_data(self, files=None):
-        if not os.path.exists("storage"):
+        if not os.path.exists(self.vector_store):
             #print("Building new index \n===========================================")
             index = self.build_index(files)
         else:
@@ -49,7 +58,7 @@ class LLMChat:
         
         
     def query_engine(self, docs):
-        query_engine = docs.as_query_engine(similarity_top_k=5, response_mode="tree_summarize")
+        query_engine = docs.as_query_engine(similarity_top_k=5)
         return query_engine
 
      
