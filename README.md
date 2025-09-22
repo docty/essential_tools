@@ -9,7 +9,7 @@ This repo contains easy to use functions to handle common tasks.
 #==============================================
 from essential_tools.folderToHFDataset import FolderToHFDataset
 
-config = folderToHFDataset(
+config = FolderToHFDataset(
     trainDataset='/kaggle/input/brain-tumor-mri-data/brain-tumor-mri-dataset', 
     valDataset=None, 
     testDataset=None 
