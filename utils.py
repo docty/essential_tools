@@ -34,7 +34,7 @@ def display_prompt_dict(prompts_dict):
         display(Markdown(""))
 
 
-def create_dataframe(base_path): 
+def kaggle_to_dataframe(base_path): 
     data = {'image_path': [], 'label': []} 
     for folder in os.listdir(base_path): 
         folder_path = os.path.join(base_path, folder) 

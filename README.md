@@ -47,7 +47,23 @@ config = FolderWithCSVToHFDataset(
 dataset = config.getDataset()
 ```
 
+### Visualise Data
+```python
+from essential_tools.visualise import _countplot, _pieplot, _display_samples
 
+_countplot(df)
+
+_pieplot(df)
+
+_display_samples(df)
+```
+
+
+### Utilities
+```python
+from essential_tools.utils import kaggle_to_dataframe
+
+kaggle_to_dataframe("/kaggle/input/soil-types-dataset/Dataset/Train/")
 
 ### Package a python application
 ```bash
