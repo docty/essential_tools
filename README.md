@@ -63,11 +63,7 @@ _display_samples(df)
 ```python
 from essential_tools.utils import kaggle_to_dataframe
 
-kaggle_to_dataframe("/kaggle/input/soil-types-dataset/Dataset/Train/")
-
-### Package a python application
-```bash
-packagePython.ipynb
+df = kaggle_to_dataframe("/kaggle/input/soil-types-dataset/Dataset/Train/")
 ```
 
 ### Google Cloud Platform Template
